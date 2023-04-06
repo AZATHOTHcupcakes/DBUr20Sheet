@@ -1,0 +1,370 @@
+.charsheet {
+  min-width: 825px;
+  min-height: 900px;
+}
+
+.banner {
+    text-align: center;
+}
+
+.tab {
+    display: none;
+}
+
+.charsheet input.tab[value=primary] ~ .primary,
+.charsheet input.tab[value=information] ~ .information,
+.charsheet input.tab[value=maneuvers] ~ .maneuvers,
+.charsheet input.tab[value=signature_techniques] ~ .signature_techniques,
+.charsheet input.tab[value=spellbook] ~ .spellbook,
+.charsheet input.tab[value=inventory] ~ .inventory,
+.charsheet input.tab[value=transformations] ~ .transformations,
+.charsheet input.tab[value=progression] ~ .progression {
+    display: block;
+}
+
+.page-header {
+  margin: 0px;
+  text-align: center;
+  padding: 0px;
+  border-color: transparent;
+}
+
+.box {
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+.box-header { 
+  text-align: center;
+}
+
+button {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+select {
+  margin-bottom: 0px;
+}
+
+/* -------- Primary Tab -------- */
+
+.primary-grid {
+  display: grid;
+  gap: 3px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "basic basic basic basic basic karma"
+    "attributes attributes aptitudes aptitudes aptitudes conditions"
+    "skills skills skills skills saves saves"
+    "skills skills skills skills . .";
+}
+
+/* ---- Basic Info Box ---- */
+
+.basic {
+  grid-area: basic;
+}
+
+  .basic-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+    .basic-items input[type=text] {
+      width: 100px;
+    }
+
+    .basic-items label {
+      width: max-content;
+    }
+
+    .basic-items div {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .basic-items select {
+      width: max-content;
+    }
+
+    .basic-items button {
+      height: 22px;
+    }
+
+    .basic-items input[type=checkbox] {
+      width: 28px;
+      height: 28px;
+    }
+
+    .basic-items .threshold label {
+      padding-left: 10px;
+    }
+
+/* ---- Karma ---- */
+.karma {
+  grid-area: karma;
+}
+
+  .karma-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+    .ui-dialog .charsheet .karma-items input[type=number] {
+      align-self: center;
+      width: 58px;
+      height: 58px;
+      text-align: center;
+      font-size: x-large;
+    }
+
+    .z-soul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+      
+      .z-soul input[type=text] {
+        width: 100px;
+        margin-bottom: 2px;
+      }
+
+/* ---- Attributes ---- */
+
+.attributes {
+  grid-area: attributes;
+}
+
+  .attributes-items {
+    display: flex;
+    flex-direction: column;
+  }
+  
+    .vertical .box {
+      flex: 1;
+    }
+
+  .total-and-base {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+    .attributes-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+      .attributes-column button {
+        width: 45px;
+      }
+
+/* ---- Aptitudes ---- */
+
+.aptitudes {
+  grid-area: aptitudes;
+}
+
+  .aptitudes-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+      "strike strike initiative"
+      "strike strike speed"
+      "offense offense defense"
+      "offense offense soak"
+      "extra extra extra";
+  }
+
+    .initiative {
+      grid-area: initiative;
+    }
+
+    .strike {
+      grid-area: strike;
+    }
+
+    .offense {
+      grid-area: offense;
+    }
+
+    .defense {
+      grid-area: defense;
+    }
+
+    .soak {
+      grid-area: soak;
+    }
+
+    .extra {
+      grid-area: extra;
+    }
+
+    .speed {
+      grid-area: speed;
+    }
+
+  .apti-complex {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: max-content 1fr;
+    grid-template-areas: 
+      ". main main ."
+      "sub1 sub1 sub2 sub2";
+  }
+
+    .apti-1 {
+      grid-area: main;
+    }
+
+    .apti-2 {
+      grid-area: sub1;
+    }
+
+    .apti-3 {
+      grid-area: sub2;
+    }
+
+    .apti-extra {
+      display: flex;
+      flex-direction: row;
+    }
+
+      .apti-extra .box {
+        flex: 1;
+      }
+
+    .apti-simple {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    
+      .v-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3px;
+      }
+
+
+/* ---- Skills ---- */
+
+.skills {
+  grid-area: skills;
+}
+
+  .skills-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+    .skills-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    /* .charsheet necessary to apply algnment fix */
+
+    .charsheet .skills-column button[type=roll] {
+      margin: 1px 3px 1px 3px;
+    }
+    
+    .skills-column select {
+      width: 126px;
+    }
+
+    .encompassing {
+      display: inline-flex;
+    }
+
+      .encompassing input {
+        width: 85px;
+      }
+
+/* ---- Saves ---- */
+
+.saves {
+  grid-area: saves;
+}
+
+  .saves-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+    .saves-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+      
+      .charsheet .saves-column input[type=checkbox] {
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+      }
+
+    .charsheet .saves-column button[type=roll] {
+      margin: 1px 3px 1px 3px;
+    }
+
+
+/* ---- Conditions ---- */
+
+.conditions {
+  grid-area: conditions;
+}
+
+  .conditions-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+    .conditions-items label {
+      width: max-content;
+      padding-right: 0px;
+    }
+
+    .positive-conditions {
+      flex: 1;  
+    }
+
+    .negative-conditions {
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+      .positive-and-negative {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+        .positive-and-negative label {
+          font-size: 1em;
+        }
+
+/* -------- Transformations Tab -------- */
+
+.transformations-grid {
+  display: grid;
+  gap: 3px;
+}
+
+
+
+/* -------------------- Jakob's RollTemplate -------------------- */
