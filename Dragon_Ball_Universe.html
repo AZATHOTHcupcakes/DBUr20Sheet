@@ -1,0 +1,903 @@
+
+<!-- Sheet Tabs Banner -->
+
+<div class="banner">
+    <button type="action" name="act_primary" >Primary</button>
+    <button type="action" name="act_information" >Information</button>
+    <button type="action" name="act_maneuvers" >Maneuvers</button>
+    <button type="action" name="act_signature_techniques" >Signature Techniques</button>
+    <button type="action" name="act_spellbook" >Spellbook</button>
+    <button type="action" name="act_inventory" >Inventory</button>
+    <button type="action" name="act_transformations" >Transformations</button>
+    <button type="action" name="act_progression" >Progression</button>
+</div>
+<input type="hidden" name="attr_tab" class="tab" value="primary">
+<br>
+
+<!-- Primary Tab -->
+
+<div class="tab primary box">
+    <div class="page-header">
+        <h2>Primary</h2>
+    </div>
+    <div class="primary-grid">
+        <div class="basic box">
+            <div class="box-header">
+                <h3>Basic Information</h3>
+            </div>
+            <div class="basic-items">
+                <div class="info">
+                    <label for="name">Name: <input type="text" name="attr_character_name" title="@{character_name}" placeholder="[Kitchen Item]"></label>
+                    <label for="race">Race: <input type="text" name="attr_race" title="@{race}" placeholder="Saiyan"></label>
+                    <label for="subrace">Subrace: <input type="text" name="attr_subrace" title="@{subrace}" placeholder="None"></label>
+                    <label for="size">Size: <input type="text" name="attr_size" title="@{size}" placeholder="Medium"></label>
+                </div>
+                <div class="numbers">
+                    <label for="power-level">Power Level: <input type="number" name="attr_power_level" title="@{power_level}" placeholder="1"></label>
+                    <label for="tier-of-power">ToP: <input type="number" name="attr_tier" title="@{tier}" placeholder="1"></label>
+                    <label for="lp">LP: <input type="number" name="attr_lp" title="@{lp}" placeholder="1"> / <input type="number" name="attr_lp_max" title="@{lp_max}" placeholder="1"></label>
+                    <label for="ki">Ki: <input type="number" name="attr_ki" title="@{ki}" value="26"> / <input type="number" name="attr_ki_max" title="@{ki_max}" value="26"></label>
+                    <label for="capacity">Capacity: <input type="number" name="attr_capacity" title="@{capacity}" value="14"></label>
+                </div>
+                <div class="threshold">
+                    <label for="health-threshold">Threshold: <select name="attr_health_threshold">
+                        <option value="0">Healthy</option>
+                        <option value="-1">Bloodied</option>
+                        <option value="-2">Injured</option>
+                        <option value="-3">Wounded</option>
+                    </select></label>
+                    <button type="roll" name="roll_steadfastSave" title="%{steadfastSave}" value="/r 1d10">Steadfast</button>
+                    <label for="threshold_penalty">Failed Steadfast: <input type="checkbox" name="attr_threshold_penalty" id="threshold_penalty" title="@{threshold_penalty}" value="0"></label>
+                </div>
+            </div>
+        </div>
+        <div class="karma box">
+            <div class="box-header">
+                <h3>Karma</h3>
+            </div>
+            <div class="karma-items">
+                <input type="number" name="attr_karma" title="@{karma}" value="5" min="0" max="10">
+                <div class="z-soul box">
+                    <h4>Z-Soul</h4>
+                    <input type="text" name="attr_z-soul" title="@{z-soul}" placeholder="Pure of Heart">
+                </div>
+            </div>
+        </div>
+        <div class="attributes box">
+            <div class="box-header">
+                <h3>Attributes</h3>
+            </div>
+            <div class="attributes-items">
+                <div class="vertical box">
+                    <div class="box-header"><h4>Total</h4></div>
+                    <div class="total-and-base">
+                        <div class="attributes-column" id="troll">
+                            <b>Roll</b>
+                            <button type="roll" name="roll_agility" title="%{agility}" value="%agility_macro">AG</button>
+                            <button type="roll" name="roll_force" title="%{force}" value="%force_macro">FO</button>
+                            <button type="roll" name="roll_tenacity" title="%{tenacity}" value="%tenacity_macro">TE</button>
+                            <button type="roll" name="roll_scholarship" title="%{scholarship}" value="%scholarship_macro">SC</button>
+                            <button type="roll" name="roll_insight" title="%{insight}" value="%insight_macro">IN</button>
+                            <button type="roll" name="roll_spirit" title="%{spirit}" value="%spirit_macro">SP</button>
+                            <button type="roll" name="roll_personality" title="%{personality}" value="%personality_macro">PE</button>
+                        </div>
+                        <div class="attributes-column" id="tmod">
+                            <b>Mod</b>
+                            <input type="number" name="attr_agility_mod" title="@{agility_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_force_mod" title="@{force_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attrs_tenacity_mod" title="@{tenacity_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attrs_scholarship_mod" title="@{scholarship_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attrs_insight_mod" title="@{insight_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attrs_spirit_mod" title="@{spirit_mod}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attrs_personality_mod" title="@{personality_mod}" value="0" placeholder="0" disabled>
+                        </div>
+                        <div class="attributes-column" id="tscore">
+                            <b>Score</b>
+                            <input type="number" name="attr_agility" title="@{agility}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_force" title="@{force}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_tenacity" title="@{tenacity}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_scholarship" title="@{scholarship}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_insight" title="@{insight}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_spirit" title="@{spirit}" value="0" placeholder="0" disabled>
+                            <input type="number" name="attr_personality" title="@{personality}" value="0" placeholder="0" disabled>
+                        </div>
+                        <div class="attributes-column" id="tmisc">
+                            <b>Misc</b>
+                            <input type="number" name="attr_agility_misc" title="@{agility_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_force_misc" title="@{force_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_tenacity_misc" title="@{tenacity_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_scholarship_misc" title="@{scholarship_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_insight_misc" title="@{insight_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_spirit_misc" title="@{spirit_misc}" value="0" placeholder="0">
+                            <input type="number" name="attr_personality_misc" title="@{personality_misc}" value="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical box">
+                    <div class="box-header"><h4>Base</h4></div>
+                    <div class="total-and-base">
+                        <div class="attributes-column" id="broll">
+                            <b>Roll</b>
+                            <button type="roll" name="roll_agility_base" title="%{agility_base}" value="%agility_base_macro">AG</button>
+                            <button type="roll" name="roll_force_base" title="%{force_base}" value="%force_base_macro">FO</button>
+                            <button type="roll" name="roll_tenacity_base" title="%{tenacity_base}" value="%tenacity_base_macro">TE</button>
+                            <button type="roll" name="roll_scholarship_base" title="%{scholarship_base}" value="%scholarship_base_macro">SC</button>
+                            <button type="roll" name="roll_insight_base" title="%{insight_base}" value="%insight_base_macro">IN</button>
+                            <button type="roll" name="roll_spirit_base" title="%{spirit_base}" value="%spirit_base_macro">SP</button>
+                            <button type="roll" name="roll_personality_base" title="%{personality_base}" value="%personality_base_macro">PE</button>
+                        </div>
+                        <div class="attributes-column" id="bmod">
+                            <b>Mod</b>
+                            <input type="number" name="attr_agility_base_mod" title="@{agility_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_force_base_mod" title="@{force_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_tenacity_base_mod" title="@{tenacity_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_scholarship_base_mod" title="@{scholarship_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_insight_base_mod" title="@{insight_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_spirit_base_mod" title="@{spirit_base_mod}" value="0" placeholder="0">
+                            <input type="number" name="attr_s_base_mod" title="@{personality_base_mod}" value="0" placeholder="0">
+                        </div>
+                        <div class="attributes-column" id="bscore">
+                            <b>Score</b>
+                            <input type="number" name="attr_agility_base" title="@{agility_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_force_base" title="@{force_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_tenacity_base" title="@{tenacity_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_scholarship_base" title="@{scholarship_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_insight_base" title="@{insight_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_spirit_base" title="@{spirit_base}" value="2" placeholder="0">
+                            <input type="number" name="attr_personality_base" title="@{personality_base}" value="2" placeholder="0">
+                        </div>
+                        <div class="attributes-column" id="bmisc">
+                            <b>Misc</b>
+                            <input type="number" name="attr_agility_misc_base" title="@{agility_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_force_misc_base" title="@{force_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_tenacity_misc_base" title="@{tenacity_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_scholarship_misc_base" title="@{scholarship_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_insight_misc_base" title="@{insight_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_spirit_misc_base" title="@{spirit_misc_base}" value="0" placeholder="0">
+                            <input type="number" name="attr_personality_misc_base" title="@{personality_misc_base}" value="0" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aptitudes box">
+            <div class="box-header">
+                <h3>Aptitudes</h3>
+            </div>
+            <div class="aptitudes-items">
+                <div class="initiative box">
+                    <div class="box-header">
+                        <button type="roll" name="roll_initiative" title="%{initiative}" value="[[d10]] &{tracker}">Initiative</button>
+                    </div>
+                    <div class="apti-simple">
+                        <div class="v-label">
+                            <b>Mod</b>
+                            <input type="number" name="attr_initiative" title="@{initiative}" value="0">
+                        </div>
+                        <div class="v-label">
+                            <b>Misc</b>
+                            <input type="number" name="attr_initiative_misc" title="@{initiative_misc}" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="strike box">
+                    <div class="box-header">
+                        <h4>Strike</h4>
+                    </div>
+                    <div class="apti-complex">
+                        <div class="apti-1 box">
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_strike" title="@{strike}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_strike_misc" title="@{strike_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apti-2 box">
+                            <div class="box-header">
+                                <h5>Haste</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_haste" title="@{haste}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_haste_misc" title="@{haste_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apti-3 box">
+                            <div class="box-header">
+                                <h5>Awareness</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_awareness" title="@{awareness}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_awareness_misc" title="@{awareness_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .box>.box-header>h4^.apti-complex>(.apti-$.box>.box-header>h5^.apti-simple>.v-label)*4 -->
+                <div class="speed box">
+                    <div class="box-header">
+                        <h4>Speed</h4>
+                    </div>
+                    <div class="apti-simple">
+                        <div class="v-label">
+                            <b>Normal</b>
+                            <input type="number" name="attr_speed" title="@{speed}" value="0">
+                        </div>
+                        <div class="v-label">
+                            <b>Boosted</b>
+                            <input type="number" name="attr_speed_misc" title="@{speed_misc}" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="offense box">
+                    <div class="box-header">
+                        <h4>Offense</h4>
+                    </div>
+                    <div class="apti-complex">
+                        <div class="apti-1 box">
+                            <div class="box-header">
+                                <h5>Super Stacks</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_super_stacks" title="@{super_stacks}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_super_stacks_misc" title="@{super_stacks_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apti-2 box">
+                            <div class="box-header">
+                                <h5>Power</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_power" title="@{power}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_power_misc" title="@{power_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apti-3 box">
+                            <div class="box-header">
+                                <h5>Magical Power</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_magical_power" title="@{magical_power}" value="0">
+                                </div>
+                                <div class="v-label">
+                                    <b>Misc</b>
+                                    <input type="number" name="attr_magical_power_misc" title="@{magical_power_misc}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="defense box">
+                    <div class="box-header">
+                        <h4>Defense</h4>
+                    </div>
+                    <div class="apti-simple">
+                        <div class="v-label">
+                            <b>Mod</b>
+                            <input type="number" name="attr_defense" title="@{defense}" value="0">
+                        </div>
+                        <div class="v-label">
+                            <b>Misc</b>
+                            <input type="number" name="attr_defense_misc" title="@{defense_misc}" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="soak box">
+                    <div class="box-header">
+                        <h4>Soak</h4>
+                    </div>
+                    <div class="apti-simple">
+                        <div class="v-label">
+                            <b>Mod</b>
+                            <input type="number" name="attr_soak" title="@{soak}" value="0">
+                        </div>
+                        <div class="v-label">
+                            <b>Misc</b>
+                            <input type="number" name="attr_soak_misc" title="@{soak_misc}" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="extra box">
+                    <div class="box-header">
+                        <h4>Extra</h4>
+                    </div>
+                    <div class="apti-extra">
+                        <div class="gifted box">
+                            <div class="box-header">
+                                <h5>Gifted Student</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                <input type="number" name="attr_gifted_student" title="@{gifted_student}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="manipulation box">
+                            <div class="box-header">
+                                <h5>Manipulation</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_manipulation" title="@{manipulation}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="surgency box">
+                            <div class="box-header">
+                                <h5>Surgency</h5>
+                            </div>
+                            <div class="apti-simple">
+                                <div class="v-label">
+                                    <b>Mod</b>
+                                    <input type="number" name="attr_surgency" title="@{surgency}" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="conditions box">
+            <div class="box-header">
+                <h3>Conditions</h3>
+            </div>
+            <div class="conditions-items">
+                <div class="positive-conditons box">
+                    <div class="box-header">
+                        <h4>Positive</h4>
+                    </div>
+                    <div class="positive-and-negative">
+                        <label for="hidden">Hidden <input type="checkbox" name="attr_hidden" id="hidden" title="@{hidden}" value="0"></label>
+                        <label for="rage">Rage <input type="checkbox" name="attr_rage" id="rage" title="@{rage}" value="0"></label>
+                        <label for="superiority">Superiority <input type="checkbox" name="attr_superiority" id="superiority" title="@{superiority}" value="0"></label>    
+                    </div>
+                </div>
+                <div class="negative-conditions box">
+                    <div class="box-header">
+                        <h4>Negative</h4>
+                    </div>
+                    <div class="positive-and-negative">
+                        <label for="absorbed">Absorbed <input type="checkbox" name="attr_absorbed" id="absorbed" title="@{absorbed}" value="0"></label>
+                        <label for="blinded">Blinded <input type="checkbox" name="attr_blinded" id="blinded" title="@{blinded}" value="0"></label>
+                        <label for="fatigued">Fatigued <input type="checkbox" name="attr_fatigued" id="fatigued" title="@{fatigued}" value="0"></label>
+                        <label for="guard_down">Guard Down <input type="checkbox" name="attr_guard_down" id="guard_down" title="@{guard_down}" value="0"></label>
+                        <label for="impediment">Impediment <input type="checkbox" name="attr_impediment" id="impediment" title="@{impediment}" value="0"></label>
+                        <label for="pinnned">Pinned <input type="checkbox" name="attr_pinned" id="pinned" title="@{pinned}" value="0"></label>
+                        <label for="prone">Prone <input type="checkbox" name="attr_prone" id="prone" title="@{prone}" value="0"></label>
+                        <label for="minion">Minion <input type="checkbox" name="attr_minion" id="minion" title="@{minion}" value="0"></label>
+                        <label for="shaken">Shaken <input type="checkbox" name="attr_shaken" id="shaken" title="@{shaken}" value="0"></label>
+                        <label for="slowed">Slowed <input type="checkbox" name="attr_slowed" id="slowed" title="@{slowed}" value="0"></label>
+                        <label for="surprised">Surprised <input type="checkbox" name="attr_surprised" id="surprised" title="@{surprised}" value="0"></label>
+                        <label for="transfigured">Transfigured <input type="checkbox" name="attr_transfigured" id="transfigured" title="@{transfigured}" value="0"></label>
+                        <label for="weakened">Weakened <input type="checkbox" name="attr_weakened" id="weakened" title="@{weakened}" value="0"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="skills box">
+            <div class="box-header"><h3>Skills</h3></div>
+            <div class="skills-items">
+                <!-- Skill Buttons -->
+                <div class="skills-column">
+                    <b>Roll</b>
+                    <button type="roll" name="roll_acrobatics" title="%{acrobatics}" value="">Acrobatics (AG)</button>
+                    <button type="roll" name="roll_athletics" title="%{athletics}" value="">Athletics (FO)</button>
+                    <button type="roll" name="roll_bluff" title="%{bluff}" value="">Bluff (PE)</button>
+                    <button type="roll" name="roll_clairvoyance" title="%{clairvoyance}" value="">Clairvoyance (SP)</button>
+                    <button type="roll" name="roll_concealment" title="%{concealment}" value="">Concealment (SP)</button>
+                        <div class="encompassing"><button type="roll" name="roll_craft_1" title="%{craft_1}" value="">Craft (SC)</button><input type="text" name="attr_craft_type_1" title="@{craft_type_1}" placeholder="Apparel"></div>
+                        <div class="encompassing"><button type="roll" name="roll_craft_2" title="%{craft_2}" value="">Craft (SC)</button><input type="text" name="attr_craft_type_2" title="@{craft_type_2}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_craft_3" title="%{craft_3}" value="">Craft (SC)</button><input type="text" name="attr_craft_type_3" title="@{craft_type_3}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_craft_4" title="%{craft_4}" value="">Craft (SC)</button><input type="text" name="attr_craft_type_4" title="@{craft_type_4}"></div>
+                    <button type="roll" name="roll_creature_handling" title="%{creature_handling}" value="">Creature Handling (IN)</button>
+                    <button type="roll" name="roll_intimidate" title="%{intimidate}" value="">Intimidate (PE)</button>
+                    <button type="roll" name="roll_intuition" title="%{intuition}" value="">Intuition (IN)</button>
+                    <button type="roll" name="roll_investigation" title="%{investigation}" value="">Investigation (SC)</button>
+                        <div class="encompassing"><button type="roll" name="roll_knowledge_1" title="%{knowledge_1}" value="">Knowledge (SC)</button><input type="text" name="attr_knowledge_type_1" title="@{knowledge_type_1}" placeholder="History"></div>
+                        <div class="encompassing"><button type="roll" name="roll_knowledge_2" title="%{knowledge_2}" value="">Knowledge (SC)</button><input type="text" name="attr_knowledge_type_2" title="@{knowledge_type_2}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_knowledge_3" title="%{knowledge_3}" value="">Knowledge (SC)</button><input type="text" name="attr_knowledge_type_3" title="@{knowledge_type_3}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_knowledge_4" title="%{knowledge_4}" value="">Knowledge (SC)</button><input type="text" name="attr_knowledge_type_4" title="@{knowledge_type_4}"></div>
+                    <button type="roll" name="roll_medicine" title="%{medicine}" value="">Medicine (SC)</button>
+                    <button type="roll" name="roll_perception" title="%{perception}" value="">Perception (IN)</button>
+                        <div class="encompassing"><button type="roll" name="roll_performance_1" title="%{performance_1}" value="">Performance (PE)</button><input type="text" name="attr_performance_type_1" title="@{performance_type_1}" placeholder="Dance"></div>
+                        <div class="encompassing"><button type="roll" name="roll_performance_2" title="%{performance_2}" value="">Performance (PE)</button><input type="text" name="attr_performance_type_2" title="@{performance_type_2}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_performance_3" title="%{performance_3}" value="">Performance (PE)</button><input type="text" name="attr_performance_type_3" title="@{performance_type_3}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_performance_4" title="%{performance_4}" value="">Performance (PE)</button><input type="text" name="attr_performance_type_4" title="@{performance_type_4}"></div>
+                    <button type="roll" name="roll_persuasion" title="%{persuasion}" value="">Persuasion (PE)</button>
+                    <button type="roll" name="roll_pilot" title="%{pilot}" value="">Pilot (AG)</button>
+                        <div class="encompassing"><button type="roll" name="roll_profession_1" title="%{profession_1}" value="">Profession (SC)</button><input type="text" name="attr_profession_type_1" title="@{profession_type_1}" placeholder="Farmer"></div>
+                        <div class="encompassing"><button type="roll" name="roll_profession_2" title="%{profession_2}" value="">Profession (SC)</button><input type="text" name="attr_profession_type_2" title="@{profession_type_2}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_profession_3" title="%{profession_3}" value="">Profession (SC)</button><input type="text" name="attr_profession_type_3" title="@{profession_type_3}"></div>
+                        <div class="encompassing"><button type="roll" name="roll_profession_4" title="%{profession_4}" value="">Profession (SC)</button><input type="text" name="attr_profession_type_4" title="@{profession_type_4}"></div>
+                    <button type="roll" name="roll_science" title="%{science}" value="">Science (SC)</button>
+                    <button type="roll" name="roll_stealth" title="%{stealth}" value="">Stealth (AG)</button>
+                    <button type="roll" name="roll_survival" title="%{survival}" value="">Survival (IN)</button>
+                    <button type="roll" name="roll_thievery" title="%{thievery}" value="">Thievery (AG)</button>
+                    <button type="roll" name="roll_use_magic" title="%{use_magic}" value="">Use Magic (SP)</button>
+                </div>
+                <!-- Skill Ranks -->
+                <div class="skills-column">
+                    <b>Rank</b>
+                    <select name="attr_acrobatics_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_athletics_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_bluff_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_clairvoyance_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_concealment_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_craft_1_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_craft_2_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_craft_3_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_craft_4_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_creature_handling">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_intimidate_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_intuition_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_investigation_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_knowledge_1_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_knowledge_2_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_knowledge_3_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_knowledge_4_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_medicine_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_perception_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_performance_1_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_performance_2_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_performance_3_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_performance_4_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_persuasion_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_pilot_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_profession_1_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_profession_2_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_profession_3_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_profession_4_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_science_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_stealth_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_survival_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_thievery_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                    <select name="attr_use_magic_prof">
+                        <option value="0">Untrained (0)</option>
+                        <option value="2">Experienced (1)</option>
+                        <option value="4">Trained (2)</option>
+                        <option value="6">Qualified(3)</option>
+                        <option value="8">Specialist (4)</option>
+                        <option value="10">Expert (5)</option>
+                    </select>
+                </div>
+                <!-- Skill Modifiers -->
+                <div class="skills-column">
+                    <b>Mod</b>
+                    <input type="number" name="attr_acrobatics" title="@{acrobatics}" value="0" disabled>
+                    <input type="number" name="attr_athletics" title="@{athletics}" value="0" disabled>
+                    <input type="number" name="attr_bluff" title="@{bluff}" value="0" disabled>
+                    <input type="number" name="attr_clairvoyance" title="@{clairvoyance}" value="0" disabled>
+                    <input type="number" name="attr_concealment" title="@{concealment}" value="0" disabled>
+                    <input type="number" name="attr_craft_1" title="@{craft_1}" value="0" disabled>
+                    <input type="number" name="attr_craft_2" title="@{craft_2}" value="0" disabled>
+                    <input type="number" name="attr_craft_3" title="@{craft_3}" value="0" disabled>
+                    <input type="number" name="attr_craft_4" title="@{craft_4}" value="0" disabled>
+                    <input type="number" name="attr_creature_handling" title="@{creature_handling}" value="0" disabled>
+                    <input type="number" name="attr_intimidate" title="@{intimidate}" value="0" disabled>
+                    <input type="number" name="attr_intuition" title="@{intuition}" value="0" disabled>
+                    <input type="number" name="attr_investigation" title="@{investigation}" value="0" disabled>
+                    <input type="number" name="attr_knowledge_1" title="@{knowledge_1}" value="0" disabled>
+                    <input type="number" name="attr_knowledge_2" title="@{knowledge_2}" value="0" disabled>
+                    <input type="number" name="attr_knowledge_3" title="@{knowledge_3}" value="0" disabled>
+                    <input type="number" name="attr_knowledge_4" title="@{knowledge_4}" value="0" disabled>
+                    <input type="number" name="attr_medicine" title="@{medicine}" value="0" disabled>
+                    <input type="number" name="attr_perception" title="@{perception}" value="0" disabled>
+                    <input type="number" name="attr_performance_1" title="@{performance_1}" value="0" disabled>
+                    <input type="number" name="attr_performance_2" title="@{performance_2}" value="0" disabled>
+                    <input type="number" name="attr_performance_3" title="@{performance_3}" value="0" disabled>
+                    <input type="number" name="attr_performance_4" title="@{performance_4}" value="0" disabled>
+                    <input type="number" name="attr_persuasion" title="@{persuasion}" value="0" disabled>
+                    <input type="number" name="attr_pilot" title="@{pilot}" value="0" disabled>
+                    <input type="number" name="attr_profession_1" title="@{profession_1}" value="0" disabled>
+                    <input type="number" name="attr_profession_2" title="@{profession_2}" value="0" disabled>
+                    <input type="number" name="attr_profession_3" title="@{profession_3}" value="0" disabled>
+                    <input type="number" name="attr_profession_4" title="@{profession_4}" value="0" disabled>
+                    <input type="number" name="attr_science" title="@{science}" value="0" disabled>
+                    <input type="number" name="attr_stealth" title="@{stealth}" value="0" disabled>
+                    <input type="number" name="attr_survival" title="@{survival}" value="0" disabled>
+                    <input type="number" name="attr_thievery" title="@{thievery}" value="0" disabled>
+                    <input type="number" name="attr_use_magic" title="@{use_magic}" value="0" disabled>
+                </div>
+                <!-- Skill Misc -->
+                <div class="skills-column">
+                    <b>Misc</b>
+                    <input type="number" name="attr_acrobatics_misc" title="@{acrobatics_misc}" value="0">
+                    <input type="number" name="attr_athletics_misc" title="@{athletics_misc}" value="0">
+                    <input type="number" name="attr_bluff_misc" title="@{bluff}" value="0" disabled>
+                    <input type="number" name="attr_clairvoyance_misc" title="@{clairvoyance_misc}" value="0">
+                    <input type="number" name="attr_concealment_misc" title="@{concealment_misc}" value="0">
+                    <input type="number" name="attr_craft_1_misc" title="@{craft_1_misc}" value="0">
+                    <input type="number" name="attr_craft_2_misc" title="@{craft_2_misc}" value="0">
+                    <input type="number" name="attr_craft_3_misc" title="@{craft_3_misc}" value="0">
+                    <input type="number" name="attr_craft_4_misc" title="@{craft_4_misc}" value="0">
+                    <input type="number" name="attr_creature_handling_misc" title="@{creature_handling_misc}" value="0">
+                    <input type="number" name="attr_intimidate_misc" title="@{intimidate_misc}" value="0">
+                    <input type="number" name="attr_intuition_misc" title="@{intuition_misc}" value="0">
+                    <input type="number" name="attr_investigation_misc" title="@{investigation_misc}" value="0">
+                    <input type="number" name="attr_knowledge_1_misc" title="@{knowledge_1_misc}" value="0">
+                    <input type="number" name="attr_knowledge_2_misc" title="@{knowledge_2_misc}" value="0">
+                    <input type="number" name="attr_knowledge_3_misc" title="@{knowledge_3_misc}" value="0">
+                    <input type="number" name="attr_knowledge_4_misc" title="@{knowledge_4_misc}" value="0">
+                    <input type="number" name="attr_medicine_misc" title="@{medicine_misc}" value="0">
+                    <input type="number" name="attr_perception_misc" title="@{perception_misc}" value="0">
+                    <input type="number" name="attr_performance_1_misc" title="@{performance_1_misc}" value="0">
+                    <input type="number" name="attr_performance_2_misc" title="@{performance_2_misc}" value="0">
+                    <input type="number" name="attr_performance_3_misc" title="@{performance_3_misc}" value="0">
+                    <input type="number" name="attr_performance_4_misc" title="@{performance_4_misc}" value="0">
+                    <input type="number" name="attr_persuasion_misc" title="@{persuasion_misc}" value="0">
+                    <input type="number" name="attr_pilot_misc" title="@{pilot_misc}" value="0">
+                    <input type="number" name="attr_profession_1_misc" title="@{profession_1_misc}" value="0">
+                    <input type="number" name="attr_profession_2_misc" title="@{profession_2_misc}" value="0">
+                    <input type="number" name="attr_profession_3_misc" title="@{profession_3_misc}" value="0">
+                    <input type="number" name="attr_profession_4_misc" title="@{profession_4_misc}" value="0">
+                    <input type="number" name="attr_science_misc" title="@{science_misc}" value="0">
+                    <input type="number" name="attr_stealth_misc" title="@{stealth_misc}" value="0">
+                    <input type="number" name="attr_survival_misc" title="@{survival_misc}" value="0">
+                    <input type="number" name="attr_thievery_misc" title="@{thievery_misc}" value="0">
+                    <input type="number" name="attr_use_magic_misc" title="@{use_magic_misc}" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="saves box">
+            <div class="box-header">
+                <h3>Saving Throws</h3>
+            </div>
+            <div class="saves-items">
+                <div class="saves-column">
+                    <b>Save</b>
+                    <button type="roll" name="roll_impulsive" title="%{impulsive}" value="d10">Impulsive</button>
+                    <button type="roll" name="roll_corporial" title="%{corporial}" value="d10">Corporeal</button>
+                    <button type="roll" name="roll_cognitive" title="%{cognitive}" value="d10">Cognitive</button>
+                    <button type="roll" name="roll_morale" title="%{morale}" value="d10">Morale</button>
+                </div>
+                <div class="saves-column" id="save-proficient">
+                    <b>Prof</b>
+                    <input type="checkbox" name="attr_impulsive_prof" title="@{impulsive_prof}" value="0">
+                    <input type="checkbox" name="attr_corporial_prof" title="@{corporial_prof}" value="0">
+                    <input type="checkbox" name="attr_cognitive_prof" title="@{cognitive_prof}" value="0">
+                    <input type="checkbox" name="attr_morale_prof" title="@{morale_prof}" value="0">
+                </div>
+                <div class="saves-column">
+                    <b>Mod</b>
+                    <input type="number" name="attr_impulsive" title="@{impulsive}" value="0">
+                    <input type="number" name="attr_corporial" title="@{corporial}" value="0">
+                    <input type="number" name="attr_cognitive" title="@{cognitive}" value="0">
+                    <input type="number" name="attr_morale" title="@{morale}" value="0">
+                </div>
+                <div class="saves-column">
+                    <b>Misc</b>
+                    <input type="number" name="attr_impulsive_misc" title="@{impulsive_misc}" value="0">
+                    <input type="number" name="attr_corporial_misc" title="@{corporial_misc}" value="0">
+                    <input type="number" name="attr_cognitive_misc" title="@{cognitive_misc}" value="0">
+                    <input type="number" name="attr_morale_misc" title="@{morale_misc}" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab information box">
+    <div class="page-header">
+        <h2>Info</h2>
+    </div>
+    <div class="info-grid">
+
+    </div>
+</div>
+<div class="tab maneuvers box">
+    <div class="page-header">
+        <h2>Maneuvers</h2>
+    </div>
+</div>
+<div class="tab signature_techniques box">
+    <div class="page-header">
+        <h2>Signature Techniques</h2>
+    </div>
+</div>
+<div class="tab spellbook box">
+    <div class="page-header">
+        <h2>Spellbook</h2>
+    </div>
+</div>
+<div class="tab inventory box">
+    <div class="page-header">
+        <h2>Inventory</h2>
+    </div>
+</div>
+<div class="tab transformations box">
+    <div class="page-header">
+        <h2>Transformations</h2>
+    </div>
+    <div class="transformations-grid">
+        <div class="transform-status box">
+            <div class="box-header">
+                <h3><span name="attr_character_name"></span></h3>
+            </div>
+        </div>
+        <div class="stress box">
+            <div class="box-header">
+                <h3>Stress</h3>
+            </div>
+            <div class="stress-items">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab progression box">
+    <div class="page-header">
+        <h2>Progression</h2>
+    </div>
+</div>
+
+<script type="text/worker">
+    
+    ["primary", "information", "maneuvers", "signature_techniques", "spellbook", "inventory", "transformations", "progression"].forEach((button) => {
+        on(`clicked:${button}`, (eventinfo) => {
+            setAttrs({ tab: button });
+        });
+    });
+
+</script>
