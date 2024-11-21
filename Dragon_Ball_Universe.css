@@ -56,9 +56,12 @@ select {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "basic basic basic basic basic karma"
-    "attributes attributes aptitudes aptitudes aptitudes conditions"
-    "skills skills skills skills saves saves"
-    "skills skills skills skills . .";
+    "attributes attributes aptitudes aptitudes aptitudes aptitudes"
+    "attributes attributes skills skills skills skills"
+    "saves saves skills skills skills skills"
+    "saves saves skills skills skills skills"
+    "conditions conditions skills skills skills skills"
+    ". . skills skills skills skills";
 }
 
 /* ---- Basic Info Box ---- */
@@ -366,3 +369,5 @@ select {
 }
 
 
+
+/* -------------------- Jakob's RollTemplate -------------------- */
